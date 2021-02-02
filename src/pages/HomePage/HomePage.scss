@@ -1,0 +1,12 @@
+.home-page {
+  padding: 100px 0px;
+  min-height: 100vh;
+  // .home-page__container
+  &__container {
+  }
+  // .home-page__body
+  &__body {
+    display: grid;
+    row-gap: 50px;
+  }
+}

@@ -1,0 +1,15 @@
+.page {
+  background: #14141f;
+}
+body {
+  &::-webkit-scrollbar {
+    appearance: none;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgb(54, 13, 95);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgb(134, 134, 134);
+    border-radius: 50px;
+  }
+}

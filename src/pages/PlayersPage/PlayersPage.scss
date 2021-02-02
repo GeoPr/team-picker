@@ -1,0 +1,21 @@
+.players-page {
+  padding: 100px 0px;
+  min-height: 100vh;
+  // .players-page__container
+  &__container {
+  }
+  // .players-page__body
+  &__body {
+  }
+  // .players-page__item
+  &__item {
+    background: #424242;
+    border-radius: 5px;
+  }
+  // .players-page__item-body
+  &__item-body {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+}
