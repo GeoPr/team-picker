@@ -130,7 +130,7 @@ export const Players = () => {
                   {player.name.trim()[0].toUpperCase()}
                   {player.isSelected && (
                     <CheckCircleIcon
-                      htmlColor="green"
+                      htmlColor='orange'
                       className={styles.root}
                     />
                   )}

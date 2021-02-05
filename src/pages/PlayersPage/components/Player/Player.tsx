@@ -50,7 +50,12 @@ const useStyles = makeStyles(() => ({
 export const Player: FC<IProps> = ({ player }) => {
   const dispatch = useDispatch();
   const styles = useStyles();
-  const { setCurrentEditablePlayer, setWhatModalOpen } = useContextValue();
+  const {
+    setCurrentEditablePlayer,
+    setWhatModalOpen,
+    countOfSelectedPlayers,
+  } = useContextValue();
+  console.log(countOfSelectedPlayers);
 
   const onClick = () => {
     dispatch(showHidePlayerSkills(player.id));
@@ -72,16 +77,16 @@ export const Player: FC<IProps> = ({ player }) => {
           <IconButton className={styles.selectedIcon}>
             <CheckCircleIcon htmlColor="green" />
           </IconButton>
-        ) : (
+        ) : !countOfSelectedPlayers ? (
           <IconButton className={styles.editIcon} onClick={openEditPlayerModal}>
             <EditIcon htmlColor="#fff" />
           </IconButton>
-        )}
+        ) : null}
         <ListItem button onClick={onClick}>
           <ListItemText
             primary={<Typography variant="h6">{player.name}</Typography>}
           />
-          {player.isSkillsOpen ? (
+          {player.skills.length && player.isSkillsOpen ? (
             <ExpandLess htmlColor="#fff" />
           ) : (
             <ExpandMore htmlColor="#fff" />
@@ -98,7 +103,7 @@ export const Player: FC<IProps> = ({ player }) => {
             {player.skills.map((skill, idx) => (
               <ListItem key={idx} className={styles.subListItem}>
                 <ListItemText primary={`${idx + 1}) ${skill}`} />
-                {player.isSelected ? null : (
+                {player.isSelected || countOfSelectedPlayers ? null : (
                   <IconButton onClick={() => deleteSkill(idx)}>
                     <DeleteIcon color="secondary" />
                   </IconButton>
