@@ -64,15 +64,15 @@ export const Players = () => {
 
   const choosePlayer = (player: IPlayer) => {
     if (!player.isSelected) {
-      setCountOfSelectedPlayers(prev => prev + 1);
-
-      if (whatTeam === 'leftTeam') {
-        setWhatTeam('rightTeam');
-      } else {
-        setWhatTeam('leftTeam');
-      }
-
       if (countOfSelectedPlayers < maxCountOfSelectedPlayers) {
+        setCountOfSelectedPlayers(prev => prev + 1);
+
+        if (whatTeam === 'rightTeam') {
+          setWhatTeam('leftTeam');
+        } else {
+          setWhatTeam('rightTeam');
+        }
+
         dispatch(selectPlayer(player.id, whatTeam));
         dispatch(addToTeam(player, whatTeam));
       }
