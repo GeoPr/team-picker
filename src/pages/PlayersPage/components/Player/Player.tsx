@@ -8,6 +8,7 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import EditIcon from '@material-ui/icons/Edit';
+import NotInterestedIcon from '@material-ui/icons/NotInterested';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useDispatch } from 'react-redux';
@@ -45,6 +46,12 @@ const useStyles = makeStyles(() => ({
       background: 'rgba(0, 140, 0, 0.2)',
     },
   },
+  blockIcon: {
+    transition: 'all 0.5s ease 0s',
+    '&:hover': {
+      background: 'rgba(252, 142, 142, 0.1);',
+    },
+  },
 }));
 
 export const Player: FC<IProps> = ({ player }) => {
@@ -55,7 +62,6 @@ export const Player: FC<IProps> = ({ player }) => {
     setWhatModalOpen,
     countOfSelectedPlayers,
   } = useContextValue();
-  console.log(countOfSelectedPlayers);
 
   const onClick = () => {
     dispatch(showHidePlayerSkills(player.id));
@@ -81,7 +87,11 @@ export const Player: FC<IProps> = ({ player }) => {
           <IconButton className={styles.editIcon} onClick={openEditPlayerModal}>
             <EditIcon htmlColor="#fff" />
           </IconButton>
-        ) : null}
+        ) : (
+          <IconButton className={styles.blockIcon}>
+            <NotInterestedIcon htmlColor="red" />
+          </IconButton>
+        )}
         <ListItem button onClick={onClick}>
           <ListItemText
             primary={<Typography variant="h6">{player.name}</Typography>}

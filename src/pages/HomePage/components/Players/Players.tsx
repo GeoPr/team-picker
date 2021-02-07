@@ -57,7 +57,9 @@ export const Players = () => {
     countOfSelectedPlayers,
   } = useContextValue();
   const styles = useStyles();
-  const [whatTeam, setWhatTeam] = useState<Team>('leftTeam');
+  const [whatTeam, setWhatTeam] = useState<Team>(
+    countOfSelectedPlayers % 2 === 0 ? 'leftTeam' : 'rightTeam',
+  );
   const [index, setIndex] = useState(0);
 
   const choosePlayer = (player: IPlayer) => {
@@ -130,7 +132,7 @@ export const Players = () => {
                   {player.name.trim()[0].toUpperCase()}
                   {player.isSelected && (
                     <CheckCircleIcon
-                      htmlColor='orange'
+                      htmlColor="orange"
                       className={styles.root}
                     />
                   )}
